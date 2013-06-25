@@ -5,6 +5,7 @@ source "https://rubygems.org"
 gem "activeadmin", github: "gregbell/active_admin"
 
 gem "geocoder", "~> 1.1.8"
+gem "inherited_resources", "~> 1.4.0"
 gem "jquery-rails"
 gem "just-datetime-picker", "~> 0.0.6"
 gem "parkeon", "~> 0.0.1"

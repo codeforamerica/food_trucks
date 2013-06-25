@@ -11,7 +11,7 @@ class Location < ActiveRecord::Base
 
   # ATTRIBUTES
 
-  attr_accessible :address
+  attr_accessible :address, :parkeon_id
   geocoded_by :address
 
   # CALLBACKS
