@@ -13,9 +13,22 @@ FoodTrucks::Application.routes.draw do
 
   namespace :api do
     resources :locations, only: [ :index, :show ] do
-      resources :time_slots, only: [ :index, :show ]
+      collection do
+        get :search
+      end
+
+      resources :time_slots, only: [ :index, :show ] do
+        collection do
+          get :search
+        end
+      end
     end
-    resources :vendors, only: [ :index, :show ]
+
+    resources :vendors, only: [ :index, :show ] do
+      collection do
+        get :search
+      end
+    end
   end
 
   root to: "admin/dashboard#index"

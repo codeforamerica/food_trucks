@@ -135,6 +135,10 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.1.0)
+    ransack (0.7.2)
+      actionpack (~> 3.0)
+      activerecord (~> 3.0)
+      polyamorous (~> 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     responders (0.9.3)
@@ -177,5 +181,6 @@ DEPENDENCIES
   parkeon (~> 0.0.1)
   pg
   rails (~> 3.2.13)
+  ransack (~> 0.7.2)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
