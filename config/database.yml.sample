@@ -1,0 +1,12 @@
+defaults: &defaults
+  adapter: postgresql
+  user: food_trucks
+  host: localhost
+
+development:
+  database: food_trucks_development
+  <<: *defaults
+
+test:
+  database: food_trucks_test
+  <<: *defaults
