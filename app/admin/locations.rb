@@ -27,6 +27,7 @@ ActiveAdmin.register Location do
 
   sidebar :location_attributes, only: :show do
     attributes_table_for resource do
+      row :name
       row :address
       row :latitude
       row :longitude
@@ -37,6 +38,7 @@ ActiveAdmin.register Location do
 
   form do |f|
     f.inputs do
+      f.input :name
       f.input :address
       f.input :parkeon_id
     end
