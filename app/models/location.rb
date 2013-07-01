@@ -24,4 +24,25 @@ class Location < ActiveRecord::Base
     address
   end
 
+  # TODO: IMPLEMENT THIS SHIT
+  def active
+    true
+  end
+
+  def to_geojson
+    { 
+      id: id,
+      type: "Feature",
+      geometry: {
+        type: "Point" ,
+        coordinates: [ longitude, latitude ]
+      },
+      properties: {
+        name: name,
+        address: address,
+        active: active
+      }
+    }
+  end
+
 end
