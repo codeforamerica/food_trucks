@@ -40,7 +40,9 @@ ActiveAdmin.register Location do
     f.inputs do
       f.input :name
       f.input :address
-      f.input :parkeon_id
+      f.input :meter_id
+      f.input :latitude
+      f.input :longitude
     end
     f.buttons
   end
