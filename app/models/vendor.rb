@@ -1,4 +1,5 @@
 class Vendor < ActiveRecord::Base
+
   # ASSOCIATIONS
 
   has_many :time_slots

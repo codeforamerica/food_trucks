@@ -20,6 +20,18 @@ class Location < ActiveRecord::Base
 
   # INSTANCE METHODS
 
+  def current_time_slot
+    time_slots.current.first
+  end
+
+  def current_scheduled_vendor
+    current_time_slot.try(:vendor)
+  end
+
+  def currently_scheduled_by?(vendor)
+    current_scheduled_vendor == vendor
+  end
+
   def to_s
     address
   end
