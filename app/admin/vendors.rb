@@ -28,6 +28,12 @@ ActiveAdmin.register Vendor do
   sidebar :vendor_attributes, only: :show do
     attributes_table_for resource do
       row :name
+      row :cuisine
+      row :website
+      row :contact_name
+      row :phone
+      row :email
+      row :license_plate
     end
   end
 

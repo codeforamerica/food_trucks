@@ -6,6 +6,6 @@ class Vendor < ActiveRecord::Base
 
   # ATTRIBUTES
 
-  attr_accessible :name, :license_plate
+  attr_accessible :name, :license_plate, :contact_name, :phone, :email, :cuisine, :website
 
 end
