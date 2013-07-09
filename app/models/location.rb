@@ -36,11 +36,6 @@ class Location < ActiveRecord::Base
     address
   end
 
-  # TODO: IMPLEMENT THIS SHIT
-  def active
-    true
-  end
-
   def to_geojson
     { 
       id: id,
@@ -52,7 +47,7 @@ class Location < ActiveRecord::Base
       properties: {
         name: name,
         address: address,
-        active: active
+        current_vendor_id: current_vendor_id
       }
     }
   end
