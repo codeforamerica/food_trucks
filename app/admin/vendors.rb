@@ -4,6 +4,10 @@ ActiveAdmin.register Vendor do
     link_to "Create Time Slot", new_admin_vendor_time_slot_path(vendor)
   end
 
+  action_item only: :show do
+    link_to "Create Truck", new_admin_vendor_truck_path(vendor)
+  end
+
   show do
     panel "Time Slots" do
       table_for(vendor.time_slots) do |t|
@@ -33,7 +37,12 @@ ActiveAdmin.register Vendor do
       row :contact_name
       row :phone
       row :email
-      row :license_plate
+    end
+  end
+
+  sidebar :vendor_trucks, only: :show do
+    ul do
+      vendor.trucks.map {|truck| li { link_to truck.license_plate, admin_vendor_truck_path(truck) } }.join("")
     end
   end
 
