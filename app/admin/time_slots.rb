@@ -11,8 +11,8 @@ ActiveAdmin.register TimeSlot do
     f.inputs do
       f.input :vendor,    as: :select
       f.input :location,  as: :select
-      f.input :start_at,  as: :just_datetime_picker
-      f.input :finish_at, as: :just_datetime_picker
+      f.input :start_at,  as: :datetime, ampm: true
+      f.input :finish_at, as: :datetime, ampm: true
     end
     f.buttons
   end

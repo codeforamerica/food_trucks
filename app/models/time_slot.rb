@@ -19,11 +19,6 @@ class TimeSlot < ActiveRecord::Base
  
   attr_accessible :location_id, :vendor_id
 
-  just_define_datetime_picker :start_at,
-    add_to_attr_accessible: true
-  just_define_datetime_picker :finish_at,
-    add_to_attr_accessible: true
-
   # INSTANCE METHODS
 
   def to_s
