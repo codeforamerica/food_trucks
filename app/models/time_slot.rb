@@ -4,7 +4,7 @@ class TimeSlot < ActiveRecord::Base
 
   scope :upcoming, lambda { where("start_at > ?", Time.now) }
   scope :expired,  lambda { where("finish_at < ?", Time.now) }
-  scope :current,  lambda { where("(start_at < ?) AND (finish_at > ?)") }
+  scope :current,  lambda { where("(start_at < ?) AND (finish_at > ?)", Time.now, Time.now) }
 
   # ASSOCIATIONS
 
