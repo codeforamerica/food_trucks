@@ -17,7 +17,7 @@ class TimeSlot < ActiveRecord::Base
 
   # ATTRIBUTES
  
-  attr_accessible :location_id, :vendor_id
+  attr_accessible :location_id, :vendor_id, :start_at, :finish_at
 
   # INSTANCE METHODS
 
