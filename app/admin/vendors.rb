@@ -1,6 +1,10 @@
 ActiveAdmin.register Vendor do
 
   action_item only: :show do
+    link_to "All Time Slots", admin_vendor_time_slots_path(vendor)
+  end
+
+  action_item only: :show do
     link_to "Create Time Slot", new_admin_vendor_time_slot_path(vendor)
   end
 
@@ -37,6 +41,7 @@ ActiveAdmin.register Vendor do
       row :contact_name
       row :phone
       row :email
+      row :business_license_number
     end
   end
 
