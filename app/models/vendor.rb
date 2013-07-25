@@ -2,8 +2,8 @@ class Vendor < ActiveRecord::Base
 
   # ASSOCIATIONS
 
-  has_many :time_slots
-  has_many :trucks
+  has_many :time_slots, dependent: :destroy
+  has_many :trucks, dependent: :destroy
   has_many :locations, through: :time_slots
 
   # ATTRIBUTES

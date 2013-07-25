@@ -2,7 +2,7 @@ class Location < ActiveRecord::Base
 
   # ASSOCIATIONS
 
-  has_many :time_slots
+  has_many :time_slots, dependent: :destroy
   has_many :vendors, through: :time_slots
 
   # VALIDATIONS
