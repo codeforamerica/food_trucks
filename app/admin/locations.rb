@@ -1,6 +1,10 @@
 ActiveAdmin.register Location do
 
   action_item only: :show do
+    link_to "All Time Slots", admin_location_time_slots_path(location)
+  end
+
+  action_item only: :show do
     link_to "Create Time Slot", new_admin_location_time_slot_path(location)
   end
 
