@@ -7,6 +7,14 @@ ActiveAdmin.register TimeSlot do
   scope :upcoming
   scope :expired
 
+  index do
+    column :vendor
+    column :location
+    column :start_at
+    column :finish_at
+    actions
+  end
+
   form do |f|
     f.inputs do
       f.input :vendor,    as: :select
