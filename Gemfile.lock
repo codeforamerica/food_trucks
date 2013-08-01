@@ -102,7 +102,7 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
-    parkeon (0.0.2)
+    parkeon (0.0.3)
       nokogiri (~> 1.6.0)
       virtus (~> 0.5.5)
     pg (0.15.1)
@@ -176,7 +176,7 @@ DEPENDENCIES
   geocoder (~> 1.1.8)
   inherited_resources (~> 1.4.0)
   jquery-rails
-  parkeon (~> 0.0.2)
+  parkeon (~> 0.0.3)
   pg
   rack-cors (~> 0.2.8)
   rails (~> 3.2.13)

@@ -3,7 +3,7 @@ class Ticket < ActiveRecord::Base
   # CONSTANTS
 
   PARKEON_MAPPING = {
-    id:             :id,
+    unique_id:      :id,
     zone:           :meter_id,
     user_type:      :user_type,
     plate:          :license_plate,
