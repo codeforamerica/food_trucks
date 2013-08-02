@@ -11,12 +11,18 @@ class Location < ActiveRecord::Base
 
   # ATTRIBUTES
 
-  attr_accessible :address, :name, :latitude, :longitude, :meter_id
+  attr_accessible :address, :name, :latitude, :longitude, :meter_id, :current_vendor_id
   geocoded_by :address
 
   # CALLBACKS
 
   after_validation :geocode, if: lambda {|l| l.address_changed? }
+
+  # CLASS METHODS
+
+  def self.reset_current_vendors!
+    Location.update_all(current_vendor_id: nil)
+  end
 
   # INSTANCE METHODS
 

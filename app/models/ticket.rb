@@ -36,4 +36,14 @@ class Ticket < ActiveRecord::Base
     end
   end
 
+  # INSTANCE METHODS
+
+  def vendor
+    Vendor.joins(:trucks).where("trucks.license_plate = ?", license_plate).first
+  end
+
+  def location
+    Location.where("meter_id = ?", meter_id).first
+  end
+
 end
