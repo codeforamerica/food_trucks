@@ -42,7 +42,7 @@ class TimeSlot < ActiveRecord::Base
   private
 
   def has_time_conflict?
-    location.time_slots.any? {|time_slot| conflicts_with?(time_slot) }
+    location.time_slots.where("id != ?", id).any? {|time_slot| conflicts_with?(time_slot) }
   end
 
   def has_no_time_conflicts
