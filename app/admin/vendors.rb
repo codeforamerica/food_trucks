@@ -53,4 +53,13 @@ ActiveAdmin.register Vendor do
     end
   end
 
+  index do
+    column :name
+    column :cuisine
+    column :contact_name
+    column :phone
+    column :email
+    column :website
+    default_actions
+  end
 end
