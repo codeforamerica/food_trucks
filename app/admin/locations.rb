@@ -16,14 +16,14 @@ ActiveAdmin.register Location do
         order = [ params[:order].gsub(/_(asc|desc)/, ''), params[:order].include?('asc') ? 'asc' : 'desc' ].join(" ")
       end
 
-      table_for(vendor.time_slots.order(order), sortable: true) do |t|
+      table_for(location.time_slots.order(order), sortable: true) do |t|
         t.column :start_at, sortable: :start_at
         t.column :finish_at, sortable: :finish_at
         t.column :vendor, sortable: :vendor_id
         t.column(:actions) do |time_slot|
-          [ link_to("View", admin_vendor_time_slot_path(vendor_id: vendor.id, id: time_slot)), 
-            link_to("Edit", edit_admin_vendor_time_slot_path(vendor_id: vendor.id, id: time_slot)), 
-            link_to("Delete", admin_vendor_time_slot_path(vendor_id: vendor.id, id: time_slot.id), method: :delete) ].join(", ").html_safe
+          [ link_to("View", admin_location_time_slot_path(location_id: location.id, id: time_slot)), 
+            link_to("Edit", edit_admin_location_time_slot_path(location_id: location.id, id: time_slot)), 
+            link_to("Delete", admin_location_time_slot_path(location_id: location.id, id: time_slot.id), method: :delete) ].join(", ").html_safe
         end
 
       end
