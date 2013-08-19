@@ -47,7 +47,7 @@ ActiveAdmin.register Vendor do
 
   sidebar :vendor_trucks, only: :show do
     ul do
-      vendor.trucks.map {|truck| li { link_to truck.license_plate, admin_vendor_truck_path(truck) } }.join("")
+      vendor.trucks.map {|truck| li { link_to truck.license_plate, admin_vendor_truck_path(vendor, truck) } }.join("")
     end
   end
 
