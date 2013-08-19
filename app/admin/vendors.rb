@@ -1,5 +1,7 @@
 ActiveAdmin.register Vendor do
 
+  config.sort_order = "name_asc"
+
   action_item only: :show do
     link_to "All Time Slots", admin_vendor_time_slots_path(vendor)
   end
