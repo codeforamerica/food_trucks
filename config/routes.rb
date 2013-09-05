@@ -3,6 +3,7 @@ FoodTrucks::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :admin do
+    resources :time_slots
     resources :vendors do
       resources :time_slots
     end

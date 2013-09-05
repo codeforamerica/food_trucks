@@ -9,25 +9,17 @@ ActiveAdmin.register Location do
   end
 
   show do
-    panel "Time Slots" do
-      table_for(location.time_slots) do |t|
-        t.column :start_at
-        t.column :finish_at
-        t.column :vendor
-        t.column(:availabity) do |time_slot|
-          status_tag(time_slot.available? ? "Open" : "Reserved")
-        end
-
-        t.column(:actions) do |time_slot|
-          [ link_to("View", admin_location_time_slot_path(location_id: location.id, id: time_slot)), 
-            link_to("Edit", edit_admin_location_time_slot_path(location_id: location.id, id: time_slot)), 
-            link_to("Delete", admin_location_time_slot_path(location_id: location.id, id: time_slot.id), method: :delete) ].join(", ").html_safe
-        end
-
-      end
-    end
-    active_admin_comments
+    render "admin/time_slots/index", time_slots: location.time_slots.page(params[:page]).per(10), context: self
   end
+
+  index do
+    column :address
+    column :latitude
+    column :longitude
+    column :name
+    default_actions
+  end
+
 
   sidebar :location_attributes, only: :show do
     attributes_table_for resource do

@@ -3,6 +3,14 @@ ActiveAdmin.register TimeSlot do
   menu false
   controller.send(:belongs_to, :location, :vendor, polymorphic: true)
 
+  controller do
+    def destroy
+      @time_slot = TimeSlot.find(params[:id])
+      @time_slot.destroy
+      redirect_to :back
+    end
+  end
+
   scope :current
   scope :upcoming
   scope :expired
