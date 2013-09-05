@@ -6,9 +6,9 @@ context.instance_eval do
     end
 
     ul class: "scopes table_tools_segmented_control" do
-      scope(:current) +
-      scope(:upcoming) +
-      scope(:expired)
+      nested_resource_scope(:current) +
+      nested_resource_scope(:upcoming) +
+      nested_resource_scope(:expired)
     end
   end
 
@@ -16,13 +16,13 @@ context.instance_eval do
     column :start_at
     column :finish_at
     column :location
-    column :actions do |ts|
-      time_slot_actions(ts)
+    column :actions do |time_slot|
+      nested_resource_actions(resource, time_slot)
     end
   end
 
   div do
-    time_slot_paginated_collection(time_slots)
+    nested_resource_paginated_collection(time_slots, nested_resource_name: :time_slots)
   end
 
 end
