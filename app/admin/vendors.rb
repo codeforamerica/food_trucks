@@ -1,5 +1,7 @@
 ActiveAdmin.register Vendor do
 
+  config.sort_order = "name_asc"
+
   action_item only: :show do
     link_to "Create Time Slot", new_admin_vendor_time_slot_path(vendor)
   end
@@ -36,8 +38,17 @@ ActiveAdmin.register Vendor do
 
   sidebar :vendor_trucks, only: :show do
     ul do
-      vendor.trucks.map {|truck| li { link_to truck.license_plate, admin_vendor_truck_path(truck) } }.join("")
+      vendor.trucks.map {|truck| li { link_to truck.license_plate, admin_vendor_truck_path(vendor, truck) } }.join("")
     end
   end
 
+  index do
+    column :name
+    column :cuisine
+    column :contact_name
+    column :phone
+    column :email
+    column :website
+    default_actions
+  end
 end

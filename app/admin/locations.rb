@@ -20,7 +20,6 @@ ActiveAdmin.register Location do
     default_actions
   end
 
-
   sidebar :location_attributes, only: :show do
     attributes_table_for resource do
       row :name
