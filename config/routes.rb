@@ -13,6 +13,8 @@ FoodTrucks::Application.routes.draw do
   end
 
   namespace :api do
+    get "calendar/time_slots", to: "calendar#time_slots"
+
     resources :feedbacks, only: [ :create ]
     resources :locations, only: [ :index, :show ] do
       collection do

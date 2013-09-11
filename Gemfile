@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # jquery-rails no longer includes jquery-ui which
 # causes active admin to error out on 0.6.0
 gem "activeadmin", github: "gregbell/active_admin"
-
+gem "icalendar"
 gem "geocoder", "~> 1.1.8"
 gem "inherited_resources", "~> 1.4.0"
 gem "jquery-rails"

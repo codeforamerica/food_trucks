@@ -40,7 +40,20 @@ class TimeSlot < ActiveRecord::Base
     time > start_at && time < finish_at
   end
 
+  def to_ical_event
+    Icalendar::Event.new.tap do |event|
+      event.start       = ical_time(start_at)
+      event.end         = ical_time(finish_at)
+      event.summary     = "#{vendor.name} at #{location.name}"
+      event.description = "#{vendor.name} - #{vendor.cuisine}"
+    end
+  end
+
   private
+
+  def ical_time(t)
+    DateTime.civil(t.year, t.month, t.day, t.hour, t.min)
+  end
 
   def has_time_conflict?
     location.time_slots.where("id != ?", id).any? {|time_slot| conflicts_with?(time_slot) }
