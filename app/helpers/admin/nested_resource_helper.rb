@@ -2,9 +2,9 @@ module Admin::NestedResourceHelper
 
   def nested_resource_actions(resource, nested_resource)
     [
-      link_to("Show",  [ :admin, resource, nested_resource ]),
+      link_to("View",  [ :admin, resource, nested_resource ]),
       link_to("Edit", [ :edit, :admin, resource, nested_resource ]),
-      link_to("Destroy", [ :admin, resource, nested_resource ], method: :delete)
+      link_to("Delete", [ :admin, resource, nested_resource ], method: :delete)
     ].join(', ').html_safe
   end
 

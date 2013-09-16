@@ -16,6 +16,7 @@ context.instance_eval do
     column :start_at
     column :finish_at
     column :location
+    column :vendor
     column :actions do |time_slot|
       nested_resource_actions(resource, time_slot)
     end
