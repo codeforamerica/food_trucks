@@ -1,3 +1,10 @@
 ActiveAdmin.register Truck do
-  belongs_to :vendor
+
+  controller do
+    def new
+      @truck = Truck.new(vendor_id: params[:vendor_id])
+      render :new
+    end
+  end
+
 end

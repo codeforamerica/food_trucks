@@ -6,10 +6,12 @@ FoodTrucks::Application.routes.draw do
     resources :time_slots
     resources :vendors do
       resources :time_slots
+      resources :trucks
     end
     resources :locations do
       resources :time_slots
     end
+    resources :trucks
   end
 
   namespace :api do

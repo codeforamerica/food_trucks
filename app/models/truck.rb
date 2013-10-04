@@ -8,4 +8,10 @@ class Truck < ActiveRecord::Base
 
   attr_accessible :license_plate, :vendor_id
 
+  # INSTANCE METHODS
+
+  def to_s
+    license_plate
+  end
+
 end
