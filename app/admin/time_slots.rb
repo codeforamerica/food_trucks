@@ -4,6 +4,7 @@ ActiveAdmin.register TimeSlot do
   controller.send(:belongs_to, :location, :vendor, polymorphic: true)
 
   controller do
+
     def show
       if params.include?(:location_id) || params.include?(:vendor_id)
         super
@@ -28,6 +29,14 @@ ActiveAdmin.register TimeSlot do
       @time_slot.destroy
       redirect_to :back
     end
+
+  end
+
+  csv do
+    column :start_at
+    column :finish_at
+    column :location_name
+    column :vendor_name
   end
 
   scope :current

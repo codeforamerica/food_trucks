@@ -40,11 +40,19 @@ class TimeSlot < ActiveRecord::Base
     time > start_at && time < finish_at
   end
 
+  def location_name
+    location.try(:name)
+  end
+
+  def vendor_name
+    vendor.try(:name)
+  end
+
   def to_ical_event
     Icalendar::Event.new.tap do |event|
       event.start       = ical_time(start_at)
       event.end         = ical_time(finish_at)
-      event.summary     = "#{vendor.name} at #{location.name}"
+      event.summary     = "#{vendor.name} at #{location_name}"
       event.description = "#{vendor.name} - #{vendor.cuisine}"
     end
   end
