@@ -18,6 +18,7 @@ FoodTrucks::Application.routes.draw do
     get "calendar/locations/:location_id", to: "calendar#locations"
     get "calendar/time_slots", to: "calendar#time_slots"
 
+    resources :time_slots, only: [ :index ]
     resources :feedbacks, only: [ :create ]
     resources :locations, only: [ :index, :show ] do
       collection do

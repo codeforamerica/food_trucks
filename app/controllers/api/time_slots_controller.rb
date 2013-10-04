@@ -5,9 +5,18 @@ class Api::TimeSlotsController < Api::ApplicationController
   belongs_to :location
 
   def index
-    index! do |format|
-      format.json do
-        respond_with collection.to_json(include: [ :vendor ])
+    if params.include?(:location_id)
+      index! do |format|
+        format.json do
+          respond_with collection.to_json(include: [ :vendor ])
+        end
+      end
+    else
+      @time_slots = TimeSlot.all
+      respond_to do |format|
+        format.json do
+          respond_with collection.to_json(include: [ :vendor ])
+        end
       end
     end
   end
