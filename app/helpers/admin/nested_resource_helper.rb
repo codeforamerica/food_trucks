@@ -1,5 +1,24 @@
 module Admin::NestedResourceHelper
 
+  def apply_order(collection)
+    if params[:order] && params[:order] =~ /^([\w\_\.]+)_(desc|asc)$/
+      column = $1
+      order  = $2
+      collection.reorder("#{column} #{order}")
+    else
+      collection
+    end
+  end
+
+  def apply_scope(collection)
+    scope = params[:scope]
+    if scope && collection.respond_to?(scope)
+      collection.send(scope)
+    else
+      collection
+    end
+  end
+
   def nested_resource_actions(resource, nested_resource)
     [
       link_to("View",  [ :admin, resource, nested_resource ]),

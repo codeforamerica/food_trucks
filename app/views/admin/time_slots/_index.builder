@@ -12,7 +12,7 @@ context.instance_eval do
     end
   end
 
-  table_for(time_slots.by_scope(params[:scope]), :sortable => true, :class => 'index_table') do
+  table_for(apply_order(apply_scope(time_slots)), :sortable => true, :class => 'index_table') do
     column :start_at
     column :finish_at
     column :location

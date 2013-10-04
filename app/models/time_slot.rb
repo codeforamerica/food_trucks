@@ -20,13 +20,6 @@ class TimeSlot < ActiveRecord::Base
  
   attr_accessible :location_id, :vendor_id, :start_at, :finish_at
 
-  # CLASS METHODS
-
-  def self.by_scope(scope_name)
-    scope_name ||= :current_or_upcoming
-    respond_to?(scope_name) ? send(scope_name) : all
-  end
-
   # INSTANCE METHODS
 
   def to_s
