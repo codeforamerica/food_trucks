@@ -64,12 +64,13 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def has_time_conflict?
-    location.time_slots.where("id != ?", id).any? {|time_slot| conflicts_with?(time_slot) }
+    location.time_slots.where("id != ?", id.to_i).to_a.any? {|time_slot| conflicts_with?(time_slot) }
   end
 
   def has_no_time_conflicts
     if has_time_conflict?
-      errors.add(:base, "Time slot conflicts with existing time slot")
+      errors.add(:start_at, "Time slot conflicts with existing time slot")
+      errors.add(:finish_at, "Time slot conflicts with existing time slot")
     end
   end
 
