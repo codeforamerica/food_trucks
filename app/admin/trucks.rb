@@ -7,4 +7,13 @@ ActiveAdmin.register Truck do
     end
   end
 
+  index do
+    column :id
+    column("Vendor Name") {|truck| truck.vendor_name }
+    column :license_plate
+    column :created_at
+    column :updated_at
+    default_actions
+  end
+
 end

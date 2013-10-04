@@ -14,4 +14,8 @@ class Truck < ActiveRecord::Base
     license_plate
   end
 
+  def vendor_name
+    vendor.try(:name)
+  end
+
 end
