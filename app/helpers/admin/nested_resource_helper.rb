@@ -13,7 +13,7 @@ module Admin::NestedResourceHelper
   def apply_scope(collection)
     scope = params[:scope]
     if scope && collection.respond_to?(scope)
-      collection.send(scope)
+      collection.unscoped.send(scope)
     else
       collection
     end

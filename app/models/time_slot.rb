@@ -1,11 +1,12 @@
 class TimeSlot < ActiveRecord::Base
 
+  default_scope lambda { where("finish_at >= ?", Time.now) }
+
   # SCOPES
 
   scope :upcoming, lambda { where("start_at > ?", Time.now) }
   scope :expired,  lambda { where("finish_at < ?", Time.now) }
   scope :current,  lambda { where("(start_at < ?) AND (finish_at > ?)", Time.now, Time.now) }
-  scope :current_or_upcoming, lambda { where("finish_at >= ?", Time.now) }
 
   # ASSOCIATIONS
 
