@@ -9,7 +9,7 @@ ActiveAdmin.register Location do
   end
 
   show do
-    render "admin/time_slots/index", time_slots: location.time_slots.page(params[:page]).per(10), context: self
+    render "admin/time_slots/index", time_slots: apply_filters(location.time_slots), context: self
     br
     active_admin_comments
   end

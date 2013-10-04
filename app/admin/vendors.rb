@@ -11,7 +11,7 @@ ActiveAdmin.register Vendor do
   end
 
   show do
-    render "admin/time_slots/index", time_slots: vendor.time_slots.page(params[:page]).per(10), context: self
+    render "admin/time_slots/index", time_slots: apply_filters(vendor.time_slots), context: self
     br
     active_admin_comments
   end

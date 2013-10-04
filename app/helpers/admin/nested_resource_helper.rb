@@ -1,5 +1,12 @@
 module Admin::NestedResourceHelper
 
+  def apply_filters(collection)
+    collection = apply_scope(collection)
+    collection = apply_order(collection)
+    collection = apply_page(collection)
+    return collection
+  end
+
   def apply_order(collection)
     if params[:order] && params[:order] =~ /^([\w\_\.]+)_(desc|asc)$/
       column = $1
@@ -17,6 +24,10 @@ module Admin::NestedResourceHelper
     else
       collection
     end
+  end
+
+  def apply_page(collection)
+    collection.page(params[:page]).per(10)
   end
 
   def nested_resource_actions(resource, nested_resource)
