@@ -1,4 +1,4 @@
-lv-trucks-map
+food_trucks
 =============
 
 ![Logo](https://raw.github.com/codeforamerica/lv-trucks-map/master/apple-touch-icon.png)
