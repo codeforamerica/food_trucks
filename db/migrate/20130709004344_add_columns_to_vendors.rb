@@ -5,6 +5,6 @@ class AddColumnsToVendors < ActiveRecord::Migration
     add_column :vendors, :phone, :string
     add_column :vendors, :email, :string
     add_column :vendors, :website, :string
-    add_column :vendors, :license_plate, :string
+#    add_column :vendors, :license_plate, :string
   end
 end

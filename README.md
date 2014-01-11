@@ -23,7 +23,29 @@ Our application shows only the designated vendor spots, and vendors participatin
 
 ## Usage / Installation
 
-TODO.
+Be sure to install postgres first
+
+1. run "bundle install"
+2. create a user in postgres 
+    # sudo su - postgres 
+    $ psql template1
+    template1=# CREATE USER tom WITH PASSWORD 'myPassword';
+    template1=# CREATE DATABASE jerry;
+    template1=# GRANT ALL PRIVILEGES ON DATABASE jerry to tom;
+    template1=# ALTER USER food_trucks CREATEDB;
+    template1=# \q
+3. Copy config/database.yml.sample to config/database.yml
+4. Edit config/database.yml to have the database, username and password you created above.  "user" needs to be changed to "username" and Password will need to be added like so:
+    username: tom
+    password: myPassword
+5. Install the libpq-dev (on ubuntu) packages
+6. run "rake db:create" to create the tables
+7. run "rake db:migrate" to populate tables
+
+
+
+
+
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help
