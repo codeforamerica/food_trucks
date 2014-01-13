@@ -1,4 +1,5 @@
 class TimeSlot < ActiveRecord::Base
+  require 'pp'
 
   default_scope lambda { where("finish_at >= ?", Time.now) }
 
@@ -38,7 +39,7 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def has_time?(time)
-    time > start_at && time < finish_at
+    time >= start_at && time <= finish_at
   end
 
   def location_name
@@ -65,7 +66,19 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def has_time_conflict?
-    location.time_slots.where("id != ?", id.to_i).to_a.any? {|time_slot| conflicts_with?(time_slot) }
+    ## Check and see how many slots a location has
+    truck_limit = location.truck_limit || 1
+    current_trucks = 1 
+
+    time_slots = location.time_slots
+    time_slots.each do |t|
+      conflict = conflicts_with?(t)
+      if conflict 
+        current_trucks += 1
+      end
+    end
+
+    return current_trucks <= truck_limit ? false : true
   end
 
   def has_no_time_conflicts

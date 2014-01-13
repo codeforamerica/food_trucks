@@ -11,7 +11,7 @@ class Location < ActiveRecord::Base
 
   # ATTRIBUTES
 
-  attr_accessible :address, :name, :latitude, :longitude, :meter_id, :current_vendor_id
+  attr_accessible :address, :name, :latitude, :longitude, :meter_id, :current_vendor_id, :truck_limit
   geocoded_by :address
 
   # CALLBACKS

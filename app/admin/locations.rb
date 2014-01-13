@@ -19,6 +19,7 @@ ActiveAdmin.register Location do
     column :latitude
     column :longitude
     column :name
+    column :truck_limit
     default_actions
   end
 
@@ -30,6 +31,7 @@ ActiveAdmin.register Location do
       row :longitude
       row :created_at
       row :updated_at
+      row :truck_limit
     end
   end
 
@@ -40,6 +42,7 @@ ActiveAdmin.register Location do
       f.input :meter_id
       f.input :latitude
       f.input :longitude
+      f.input :truck_limit
     end
     f.buttons
   end
