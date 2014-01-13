@@ -30,8 +30,6 @@ Be sure to install postgres first
     # sudo su - postgres 
     $ psql template1
     template1=# CREATE USER tom WITH PASSWORD 'myPassword';
-    template1=# CREATE DATABASE jerry;
-    template1=# GRANT ALL PRIVILEGES ON DATABASE jerry to tom;
     template1=# ALTER USER food_trucks CREATEDB;
     template1=# \q
 3. Copy config/database.yml.sample to config/database.yml
@@ -39,7 +37,7 @@ Be sure to install postgres first
     username: tom
     password: myPassword
 5. Install the libpq-dev (on ubuntu) packages
-6. run "rake db:create" to create the tables
+6. run "rake db:create" to create the database
 7. run "rake db:migrate" to populate tables
 
 
