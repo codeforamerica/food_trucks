@@ -66,11 +66,17 @@ class TimeSlot < ActiveRecord::Base
 
   def has_time_conflict?
     ## Check and see how many slots a location has
+    #Rails.logger.info("running has_time_conflicts")
     truck_limit = location.truck_limit || 1
     current_trucks = 1 
 
+#    require 'pp'
+#    Rails.logger.info("Time slots: #{pp location.time_slots}")
     #location.time_slots.each do |t|  # Get only time slots whose end date > now
-    location.time_slots.current.each do |t|  # Get only time slots whose end date > now
+    location.time_slots.each do |t|  # Get only time slots whose end date > now
+#	Rails.logger.info("\n\n\n===============================================================")
+#	Rails.logger.info("Current trucks: #{current_trucks} and limit: #{truck_limit}")
+#	Rails.logger.info("===============================================================\n\n\n")
       current_trucks += 1 if conflicts_with?(t)
       return true if current_trucks > truck_limit
     end
@@ -79,6 +85,7 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def has_no_time_conflicts
+    Rails.logger.info("running has_no_time_conflicts")
     if has_time_conflict?
       errors.add(:start_at, "Time slot conflicts with existing time slot")
       errors.add(:finish_at, "Time slot conflicts with existing time slot")
