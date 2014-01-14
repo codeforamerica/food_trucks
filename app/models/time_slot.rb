@@ -1,5 +1,4 @@
 class TimeSlot < ActiveRecord::Base
-  require 'pp'
 
   default_scope lambda { where("finish_at >= ?", Time.now) }
 
@@ -70,15 +69,13 @@ class TimeSlot < ActiveRecord::Base
     truck_limit = location.truck_limit || 1
     current_trucks = 1 
 
-    time_slots = location.time_slots
-    time_slots.each do |t|
-      conflict = conflicts_with?(t)
-      if conflict 
-        current_trucks += 1
-      end
+    #location.time_slots.each do |t|  # Get only time slots whose end date > now
+    location.time_slots.current.each do |t|  # Get only time slots whose end date > now
+      current_trucks += 1 if conflicts_with?(t)
+      return true if current_trucks > truck_limit
     end
 
-    return current_trucks <= truck_limit ? false : true
+    return current_trucks > truck_limit 
   end
 
   def has_no_time_conflicts
