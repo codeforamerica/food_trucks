@@ -11,6 +11,7 @@ class Location < ActiveRecord::Base
 
   # ATTRIBUTES
 
+  #attr_accessor :current_vendor_ids
   attr_accessible :address, :name, :latitude, :longitude, :meter_id, :current_vendor_id, :truck_limit
   geocoded_by :address
 
@@ -19,9 +20,12 @@ class Location < ActiveRecord::Base
   after_validation :geocode, if: lambda {|l| l.address_changed? }
 
   # CLASS METHODS
-
   def self.reset_current_vendors!
-    Location.update_all(current_vendor_id: nil)
+    TimeSlot.update_all(checked_in: false)
+  end
+
+  def after_initialize 
+    fix_current_vendor_ids
   end
 
   # INSTANCE METHODS
@@ -43,6 +47,15 @@ class Location < ActiveRecord::Base
   end
 
   def to_geojson
+    time_slots = self.time_slots.current
+    current_vendor_id = []
+    require 'pp'
+    time_slots.each do |t|
+      logger.error("Going through stuff for #{pp t}")
+      if t.checked_in == true
+        current_vendor_id.push(t.vendor_id)
+      end
+    end
     { 
       id: id,
       type: "Feature",
@@ -53,7 +66,7 @@ class Location < ActiveRecord::Base
       properties: {
         name: name,
         address: address,
-        current_vendor_id: current_vendor_id
+        current_vendor_id: current_vendor_id,
       }
     }
   end
