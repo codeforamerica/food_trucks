@@ -38,7 +38,9 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def has_time?(time)
-    time >= start_at && time <= finish_at
+    ## I -think- this should allow them to share the same start and finish times.
+    time > start_at && time < finish_at
+    #time >= start_at && time <= finish_at
   end
 
   def location_name

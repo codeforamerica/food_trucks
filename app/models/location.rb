@@ -47,15 +47,18 @@ class Location < ActiveRecord::Base
   end
 
   def to_geojson
-    time_slots = self.time_slots.current
     current_vendor_id = []
-    require 'pp'
-    time_slots.each do |t|
-      logger.error("Going through stuff for #{pp t}")
-      if t.checked_in == true
-        current_vendor_id.push(t.vendor_id)
-      end
+    self.time_slots.current.find(:all, :conditions => {:checked_in => true}).each do |t| 
+      current_vendor_id << t.vendor_id
     end
+    current_vendor_id = nil if current_vendor_id.empty?
+
+#    time_slots = self.time_slots.current
+#    time_slots.each do |t|
+#      if t.checked_in == true
+#        current_vendor_id.push(t.vendor_id)
+#      end
+#    end
     { 
       id: id,
       type: "Feature",

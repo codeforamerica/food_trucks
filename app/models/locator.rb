@@ -39,7 +39,8 @@ class Locator
 #	puts "Time slots ===============================================\n"
 #	pp time_slots
         time_slot = location.time_slots.current.find_by_vendor_id(vendor.id)
-
+#	require 'pp'
+#
 #	puts "Data ================================================\n"
 #	puts "Lcoation"
 #	pp location
@@ -48,10 +49,15 @@ class Locator
 #	puts "time slot"
 #	pp time_slot
 #	puts "Data ================================================\n"
-	if time_slot
-#          puts "Updating time slots."
+
+        ## Create time slot if one doesn't exist.
+        if time_slot.nil?
+          time_slot = TimeSlot.new(location_id: location.id, vendor_id: vendor.id, start_at: ticket.start_at, finish_at: ticket.finish_at, checked_in: true)
+          time_slot.save
+        else
           time_slot.update_attributes(checked_in: true)
         end
+
       end
     end
 
