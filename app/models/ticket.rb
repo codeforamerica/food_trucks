@@ -32,8 +32,8 @@ class Ticket < ActiveRecord::Base
 
   def self.pull
     Parkeon::Ticket.all.map do |ticket|
-	require 'pp'
-	pp ticket
+	#require 'pp'
+	# pp ticket
       from_parkeon_ticket(ticket)
     end
   end
