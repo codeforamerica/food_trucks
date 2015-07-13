@@ -87,3 +87,4 @@ Copyright (c) 2013 Code for America. See [LICENSE][] for details.
 [![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/lv-trucks-map.png)][tracker]
 
 [tracker]: http://stats.codeforamerica.org/projects/lv-trucks-map
+
