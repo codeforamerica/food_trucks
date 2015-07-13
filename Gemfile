@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.1.2"
 
 # jquery-rails no longer includes jquery-ui which
 # causes active admin to error out on 0.6.0
